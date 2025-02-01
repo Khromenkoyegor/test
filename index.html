@@ -101,15 +101,19 @@
       font-size: 24px;
       color: #D4AF37; /* Колір фактурного золота */
     }
+    /* Заміна фону комірки з червоного на золотистий градієнт */
     .service-card.touch-the-soul {
-      background-color: #FFD1DC;
-      border: 2px solid transparent;
-      background-clip: padding-box; /* Щоб градієнт не перекривав фон */
+      background: linear-gradient(45deg, #D4AF37, #FFD700);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
       position: relative;
-      /* Зміна кольору тексту з червоного на золотий */
-      color: #D4AF37;
+      /* За потреби можна змінити колір тексту, але залишено стандартний для контрасту */
+      color: #333333;
     }
-    .service-card.touch-the-soul::before {
+    /* Якщо псевдоелемент для рамки більше не потрібен – його можна прибрати */
+    /* .service-card.touch-the-soul::before {
       content: '';
       position: absolute;
       top: -2px;
@@ -117,9 +121,9 @@
       right: -2px;
       bottom: -2px;
       background: linear-gradient(45deg, #D4AF37, #FFD700, #D4AF37);
-      border-radius: 12px; /* Збільшений радіус для градієнту */
+      border-radius: 12px;
       z-index: -1;
-    }
+    } */
     .accordion {
       background-color: #FFFFFF;
       padding: 20px;
