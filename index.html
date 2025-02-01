@@ -151,8 +151,8 @@
     .reviews-slider {
       position: relative;
       width: 100%;
-      max-width: 600px;
-      height: 400px;
+      max-width: 640px; /* Змінено максимальну ширину */
+      height: 1138px; /* Змінено висоту */
       margin: 0 auto;
       overflow: hidden;
     }
@@ -162,7 +162,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain; /* Змінено на "contain" для уникнення обрізання */
       opacity: 0;
       animation: fade 12s infinite;
     }
@@ -211,7 +211,8 @@
         grid-template-columns: 1fr; /* Один стовпець для мобільних */
       }
       .reviews-slider {
-        height: 250px;
+        height: 500px; /* Змінено висоту для мобільних пристроїв */
+        max-width: 100%; /* Дозволяє контейнеру займати всю доступну ширину */
       }
     }
   </style>
