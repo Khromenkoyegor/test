@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Масаж та цілительство | Черкаси</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Плавне прокручування сторінки */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Загальні стилі та анімації */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: #FAF8F1;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    header {
+      background: linear-gradient(to right, #FFD1DC, #E6E6FA);
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      pointer-events: none;
+      transform: translateY(-100%);
+      animation: slideDown 2s ease-out forwards;
+    }
+    @keyframes slideDown {
+      to { transform: translateY(0); }
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      color: #D4AF37; /* золотистий колір */
+      margin-bottom: 20px;
+      word-wrap: break-word;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+    .header-text {
+      font-size: 24px;
+      line-height: 1.5;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      word-wrap: break-word;
+    }
+    .profile-image {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 50%;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-out;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      color: #D4AF37;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-out;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #666;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .section {
+      margin: 60px 0;
+      padding: 40px;
+      border-radius: 15px;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
+    }
+    .section-alt {
+      background-color: #E6E6FA;
+    }
+    .btn {
+      background-color: #FFABAB;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn:hover {
+      background-color: #FF8C8C;
+      transform: scale(1.05);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: #D4AF37;
+      margin-bottom: 10px;
+    }
+    .service-card.touch-the-soul {
+      background-color: #FFD1DC;
+      border: 2px solid #FF8C8C;
+    }
+    /* Стилізація акордеонів */
+    .accordion {
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .accordion:hover {
+      background-color: #F7F7F7;
+      transform: scale(1.01);
+    }
+    .accordion h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: #D4AF37;
+      margin: 0;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding-top 0.4s ease;
+    }
+    .accordion.active .accordion-content {
+      max-height: 1000px; /* досить велике значення для контенту */
+      padding-top: 20px;
+    }
+    .accordion-content p {
+      margin: 0;
+    }
+    footer {
+      background-color: #E6E6FA;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+      animation: fadeIn 1s ease-out;
+    }
+    /* Кнопка "Повернутися наверх" */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #D4AF37;
+      color: #fff;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      z-index: 1000;
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      background-color: #b38e2a;
+    }
+    /* Адаптація для мобільних пристроїв */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      .header-text {
+        font-size: 18px;
+      }
+      .profile-image {
+        max-width: 200px;
+      }
+      .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+      .section {
+        padding: 20px;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.imgur.com/W5GlnFI.jpeg" alt="Фото майстра" class="profile-image">
+    <h1>Масаж🔸Психосоматика🔸Цілительство🔸Звуковий ченелінг</h1>
+    <p class="header-text">Зменшую біль у тілі за 1 сеанс. 4 роки практики лікувального масажу. Черкаси.</p>
+    <button class="btn">Записатися на сеанс</button>
+  </header>
+
+  <div class="container">
+    <!-- Секція "Про мене" -->
+    <section class="section">
+      <h2>Про мене</h2>
+      <p>Я — масажист, цілитель та спеціаліст з психосоматики. Маю вищу медичну освіту, але обрав шлях цілителя, щоб допомагати людям знаходити гармонію тіла та душі. Мої сеанси — це поєднання лікувального масажу, звукового ченелінгу та енергетичного цілительства.</p>
+    </section>
+
+    <!-- Секція "Послуги" -->
+    <section class="section section-alt">
+      <h2>Послуги</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Лікувальний масаж</h3>
+          <p>Даоський, тайський, лімфодренажний, класичний, спортивний.</p>
+        </div>
+        <div class="service-card">
+          <h3>Психосоматика</h3>
+          <p>Робота з емоційними блоками через тіло.</p>
+        </div>
+        <div class="service-card">
+          <h3>Звуковий ченелінг</h3>
+          <p>Використання тибетських чаш, дзвоників, караталів.</p>
+        </div>
+        <div class="service-card">
+          <h3>Цілительство</h3>
+          <p>Енергетичне зцілення та балансування.</p>
+        </div>
+        <div class="service-card touch-the-soul">
+          <h3>Масаж "Touch The Soul"</h3>
+          <p>Унікальний масаж, який поєднує релаксацію тіла, звуковий супровід та медитативну практику. Це занурення у себе для віднайдення внутрішнього спокою.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секція "Процес масажу" -->
+    <section class="section">
+      <h2>Процес масажу</h2>
+      <p>Кожен сеанс — це унікальний досвід, який включає масаж, звуковий супровід та медитативну практику. Ви відчуєте глибоке розслаблення та емоційне оновлення.</p>
+    </section>
+
+    <!-- Інтерактивні блоки -->
+    <section class="section section-alt">
+      <h2>Часті питання</h2>
+      <div class="accordion">
+        <h3>Як часто ходити на масаж?</h3>
+        <div class="accordion-content">
+          <p>Для більшої зрозумілості можу порівняти наше тіло з генератором/акумулятором😅. Спочатку нам потрібно його завести, щоб він почав працювати... Запустили – далі працює сам, поки є бензин/заряд. Коли бензин/заряд закінчується – долили, підзарядили і далі погнали творити енергію і працювати🔥. Для заведення вашого тілесного моторчика потрібно почати з 2-3 сеансів на тиждень, після чого тіло починає "включатись" і генерує все більше енергії. Після основної роботи по лікувальному запиту можна підзаряджатись і приходити час від часу для підтримання балансу і здоров'я – от тоді буде максимальна користь від Вашого піклування про себе в тандемі з моїми руками та енергією🙏✨ Чекаю на сеансах☯️😌</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <h3>Чому потрібен масаж всього тіла?</h3>
+        <div class="accordion-content">
+          <p>Та все просто...💁‍♀️ Наш організм – це цілісна система, в якій все взаємопов'язано. Якщо брати до уваги знання з китайської медицини, то по всьому тілу проходить 14 основних меридіан, на яких розташовано безліч енергетично активних точок, що відповідають за ті чи інші органи і системи. По цим меридіанам протікає наша життєва енергія (Ци). Якщо є дисбаланс в якійсь із точок, порушується вільний тік енергії, і це може впливати на роботу всього організму. Тому іноді біль у попереку може бути пов'язана з зажимом у литковому м'язі (в народі – ікра😅), а біль у потиличній зоні – із застоєм енергії в стопі💁‍♀️☯️. Саме тому важливо комплексно працювати з енергією всього тіла, любити і радувати його масажем, а не тільки окремі частини. Для запису на сеанс пишіть в особисті повідомлення і будьте здорові✨</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <h3>Парь і не парься! 🦵🦶</h3>
+        <div class="accordion-content">
+          <p>Порада, яку варто зберегти і користуватись щодня👐. Традиція парити ніжки в китайській медицині – один із базових методів лікування та профілактики. Весь секрет – у стопі🦶, яка схожа на багатофункціональний пульт управління організмом з більше 60 кнопочками (біоактивними точками) та 6 програмами (меридіанами), що відповідають за нормальне функціонування нирок, селезінки, печінки, жовчного міхура, шлунка та сечової системи. Активація точок і меридіан відбувається за допомогою гарячої води та корисних речовин (трав, аромамасел), які краще доставляються через розігріті стопи...✨</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секція "Відгуки" -->
+    <section class="section">
+      <h2>Відгуки</h2>
+      <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <div class="testimonial-card" style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <p>"Найкращий масаж у моєму житті! Відчула себе по-новому."</p>
+          <p><strong>Олена</strong></p>
+        </div>
+        <div class="testimonial-card" style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <p>"Дуже професійно та з любов'ю. Рекомендую всім!"</p>
+          <p><strong>Андрій</strong></p>
+        </div>
+        <div class="testimonial-card" style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <p>"Після сеансу зник стрес, і я відчула себе справжньою."</p>
+          <p><strong>Марія</strong></p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2023 Масаж та цілительство | Черкаси. Усі права захищені.</p>
+  </footer>
+
+  <!-- Кнопка "Повернутися наверх" -->
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    function toggleAccordion(element) {
+      element.classList.toggle('active');
+    }
+
+    // Додаємо обробку подій для акордеонів (click і touchstart)
+    document.querySelectorAll('.accordion').forEach(function(acc) {
+      acc.addEventListener('click', function(e) {
+        toggleAccordion(this);
+      });
+      acc.addEventListener('touchstart', function(e) {
+        toggleAccordion(this);
+        e.preventDefault(); // запобігаємо подвійній активації
+      });
+    });
+
+    // Функція прокручування до верху
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Показ/приховування кнопки "Повернутися наверх" при скролі
+    window.addEventListener('scroll', function() {
+      const btn = document.querySelector('.back-to-top');
+      if (window.pageYOffset > 300) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>
