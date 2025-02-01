@@ -103,7 +103,20 @@
     }
     .service-card.touch-the-soul {
       background-color: #FFD1DC;
-      border: 2px solid #FF8C8C;
+      border: 2px solid transparent;
+      background-clip: padding-box; /* Щоб градієнт не перекривав фон */
+      position: relative;
+    }
+    .service-card.touch-the-soul::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #D4AF37, #FFD700, #D4AF37);
+      border-radius: 12px; /* Збільшений радіус для градієнту */
+      z-index: -1;
     }
     .accordion {
       background-color: #FFFFFF;
